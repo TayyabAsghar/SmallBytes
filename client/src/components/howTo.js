@@ -21,16 +21,13 @@ const HowTo = (props) => {
 							How to {props.mode} your File Online:
 						</h1>
 						<h2 className="my-8">
-							<strong>1.</strong> Select the Type of File you want
-							to Compress from Select File Format.
+							<strong>1 .</strong> Click 'CHOSE FILE' button and select the file to {props.mode}.
 						</h2>
 						<h2 className="my-8">
-							<strong>2.</strong> Click Compress File and wait for
-							the Compression process to take place.
+							<strong>2 .</strong> Click {props.mode} File and wait for the {props.mode}ion process to take place.
 						</h2>
 						<h2 className="my-8">
-							<strong>3.</strong> Now you are one. Just save the
-							Compressed file to your device.
+							<strong>3 .</strong> {props.mode}ed file will automatically be saved on your system.
 						</h2>
 					</div>
 				</div>

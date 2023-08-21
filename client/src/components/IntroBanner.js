@@ -2,65 +2,65 @@ import React from "react";
 import "../styles/IntroBanner.css";
 import logo from "../images/SmallBytesLogo.SVG";
 
-class IntroBanner extends React.Component {
-	render() {
-		return (
-			<div>
-				<section className="text-gray-700 body-font">
-					<div className="container mx-auto my-10 flex px-5 py-20 md:flex-row flex-col items-center">
-						<div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-							<h1
-								className="title-font sm:text-4xl text-3xl mb-4 font-semibold text-gray-900"
-								style={{ color: "#db2d2c" }}
+export default function IntroBanner() {
+	return (
+		<div>
+			<section className="text-gray-700 body-font">
+				<div className="container mx-auto my-10 flex px-5 py-20 md:flex-row flex-col items-center">
+					<div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+						<h1
+							className="title-font sm:text-4xl text-3xl mb-4 font-semibold text-gray-900"
+							style={{ color: "#db2d2c" }}
+						>
+							What is Small Bytes
+						</h1>
+						<p className="mb-8 leading-relaxed text-xl text-justify">
+							Small Bytes is a Web Application Based Free
+							Compression Tool. It uses the LZW Compression
+							algorithm to compress your files. This
+							application is a university project. It is very
+							simple and easy to use. This project is
+							basically implemented to show how LZW
+							Compression works. This Web Application is made
+							using React, TailWind CSS and Node.js. And you can view its
+							code&nbsp;
+							<a
+								href="https://github.com/TayyabAsghar"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="project-link underline"
 							>
-								What is Small Bytes
-							</h1>
-							<p className="mb-8 leading-relaxed text-xl text-justify">
-								Small Bytes is a Web Application Based Free
-								Compression Tool. It uses the LZW Compression
-								algorithm to compress your files. This
-								application is a university project. It is very
-								simple and easy to use. This project is
-								basically implemented to show how LZW
-								Compression works. This Web Application is made
-								using React, TailWind CSS and Node.js. Also this
-								is an open source project. And you can view its
-								code&nbsp;
-								<a
-									href="https://github.com/TayyabAsghar/CS311S20PID48"
-									target="_blank"
-									className="project-link"
-								>
-									here
-								</a>
-								.
-							</p>
-							<strong className="text-2xl mb-2">
-								We Support following formats
-							</strong>
-							<div className="flex justify-center text-2xl text-gray-600">
-								<a href="#" className="formats mx-1">
-									TXT
-								</a>
-								<div className="border-l-2 border-gray-700 m-2"></div>
-								<a href="#" className="formats mx-1">
-									TIFF
-								</a>
+								here
+							</a>
+							.
+						</p>
+						<strong className="text-2xl mb-2">
+							We Support following formats
+						</strong>
+						<div className="flex justify-center text-2xl text-gray-600">
+							<div className="formats mx-1 cursor-default">
+								TXT
+							</div>
+							<div className="border-l-2 border-gray-700 m-2"></div>
+							<div className="formats mx-1 cursor-default">
+								TIFF
+							</div>
+							<div className="border-l-2 border-gray-700 m-2"></div>
+							<div className="formats mx-1 cursor-default">
+								GIF
 							</div>
 						</div>
-						<div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-							<img
-								className="object-cover object-center rounded"
-								alt="AppLogo"
-								src={logo}
-							></img>
-						</div>
 					</div>
-				</section>
-				<hr></hr>
-			</div>
-		);
-	}
+					<div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+						<img
+							className="object-cover object-center rounded"
+							alt="AppLogo"
+							src={logo}
+						></img>
+					</div>
+				</div>
+			</section>
+			<hr></hr>
+		</div>
+	);
 }
-
-export default IntroBanner;

@@ -1,7 +1,10 @@
-.project-link, .formats{
+.project-link,
+.formats {
     transition: all ease-in 0.2s;
 }
-.project-link:hover, .formats:hover{
-   color: #ee3233;
-   
+
+.project-link:hover,
+.formats:hover {
+    color: #ee3233;
+
 }

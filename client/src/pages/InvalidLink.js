@@ -1,13 +1,13 @@
 import React from "react";
 import NavBar from "../components/NavBar";
-import "../styles/invalidLink.css";
+import NotFound from "../images/NotFound.svg";
 
 const invalidLink = () => {
     return (
         <div>
             <NavBar />
-            <div className="invalid-link-text text-gray-800 tracking-wider text-center mx-auto mt-20">
-                ERROR 404: The Link you Entered is NOT VALID
+            <div className="flex justify-center content-center">
+                <img alt="Not Found" src={NotFound}></img>
             </div>
         </div>
     );

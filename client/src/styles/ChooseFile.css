@@ -1,5 +1,5 @@
 .choose-file .wrapper {
-	background-color: #ee3233;
+	background-color: #EE3233;
 }
 
 .choose-file .wrapper .container {
@@ -13,9 +13,47 @@
 .choose-file .wrapper .container .choose-file-button:hover {
 	background-color: rgb(240, 240, 240);
 }
+
 .choose-file .display-none {
 	display: none;
 }
-.choose-file .compress-file-button {
-	background-color: #ee3233;
+
+#submitButton {
+	min-width: 136px;
+	margin-bottom: 12px;
+	background-color: #EE3233;
+
+	&:disabled {
+		background-color: #E5E7EB;
+		cursor: not-allowed;
+	}
+}
+
+.uploaded-file {
+	width: 100px;
+	height: 100px;
+}
+
+.file-name {
+	color: #EE3233;
+	font-size: 16px;
+}
+
+.spinner {
+	margin-left: 20px;
+	margin-right: 20px;
+	animation-name: spin;
+	animation-duration: 500ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
 }
