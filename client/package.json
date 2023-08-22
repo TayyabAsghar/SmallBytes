@@ -4,17 +4,16 @@
 	"private": true,
 	"proxy": "http://localhost:3001",
 	"dependencies": {
-		"@testing-library/jest-dom": "^4.2.4",
-		"@testing-library/react": "^9.5.0",
-		"@testing-library/user-event": "^7.2.1",
-		"axios": "^0.21.1",
-		"blob": "^0.1.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.15.0",
+		"react-scripts": "^5.0.1",
+		"@testing-library/jest-dom": "^6.0.1",
+		"@testing-library/react": "^14.0.0",
+		"@testing-library/user-event": "^14.4.3",
+		"axios": "^1.4.0",
 		"js-file-download": "^0.4.12",
-		"node": "^14.7.0",
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1",
-		"react-router-dom": "^5.2.0",
-		"react-scripts": "3.4.1"
+		"node": "^18.17.0"
 	},
 	"scripts": {
 		"start": "set PORT=3000 && react-scripts start",
@@ -38,6 +37,6 @@
 		]
 	},
 	"devDependencies": {
-		"gh-pages": "^3.1.0"
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11"
 	}
 }

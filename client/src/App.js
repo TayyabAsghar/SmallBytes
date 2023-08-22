@@ -1,39 +1,21 @@
 import React from "react";
 import MainPage from "./pages/MainPage";
+import InvalidLink from "./pages/InvalidLink";
 import CompressorPage from "./pages/CompressorPage";
 import DecompressorPage from "./pages/DecompressorPage";
-import invalidLink from "./pages/InvalidLink";
-import {
-	BrowserRouter as Router,
-	Route,
-	Switch,
-	Redirect,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 export default function App() {
 	return (
-		<Router>
-			<Switch>
-				<Route exact path="/small-bytes/home" component={MainPage} />
-				<Route exact path="/">
-					<Redirect to="/small-bytes/home" />
-				</Route>
-				<Route exact path="/small-bytes/">
-					<Redirect to="/small-bytes/home" />
-				</Route>
-				<Route
-					exact
-					path="/small-bytes/compressor"
-					component={CompressorPage}
-				/>
-				<Route
-					exact
-					path="/small-bytes/decompressor"
-					component={DecompressorPage}
-				/>
-				<Route exact path="/404" component={invalidLink} />
-				<Redirect to="/404" />
-			</Switch>
-		</Router>
+		<BrowserRouter>
+			<Routes>
+				<Route exact path="/small-bytes/home" element={<MainPage />} />
+				<Route path="/" element={<Navigate to="/small-bytes/home" />} />
+				<Route path="/small-bytes/" element={<Navigate to="/small-bytes/home" />} />
+				<Route exact path="/small-bytes/compressor" element={<CompressorPage />} />
+				<Route exact path="/small-bytes/decompressor" element={<DecompressorPage />} />
+				<Route exact path="/404" element={<InvalidLink />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }

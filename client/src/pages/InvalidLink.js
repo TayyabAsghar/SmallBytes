@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import NotFound from "../images/NotFound.svg";
 
-const invalidLink = () => {
+const InvalidLink = () => {
     return (
         <div>
             <NavBar />
@@ -13,4 +13,4 @@ const invalidLink = () => {
     );
 };
 
-export default invalidLink;
+export default InvalidLink;
