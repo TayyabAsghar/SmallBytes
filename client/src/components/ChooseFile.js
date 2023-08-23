@@ -9,6 +9,7 @@ import { ReactComponent as Loader } from '../images/Loader.svg';
 
 
 export default function ChooseFile(props) {
+	const API = 'https://small-bytes-server.vercel.app/';
 	const supportedFiles = ['txt', 'tiff', 'gif'];
 	const headers = {
 		'Content-Type': 'multipart/form-data',
@@ -60,10 +61,10 @@ export default function ChooseFile(props) {
 		data.append("file", selectedFile);
 
 		if (props.mode === "Compress") {
-			url = "http://localhost:3001/compress";
+			url = `${API}/compress`;
 			downloadFileName = fileName + '.lzw';
 		} else if (props.mode === "Decompress") {
-			url = "http://localhost:3001/decompress";
+			url = `${API}/decompress`;
 			downloadFileName = `${fileParts[0].fileParts[1]}`;
 		}
 

@@ -9,11 +9,10 @@ export default function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route exact path="/small-bytes/home" element={<MainPage />} />
-				<Route path="/" element={<Navigate to="/small-bytes/home" />} />
-				<Route path="/small-bytes/" element={<Navigate to="/small-bytes/home" />} />
-				<Route exact path="/small-bytes/compressor" element={<CompressorPage />} />
-				<Route exact path="/small-bytes/decompressor" element={<DecompressorPage />} />
+				<Route exact path="/home" element={<MainPage />} />
+				<Route path="/" element={<Navigate to="/home" />} />
+				<Route exact path="/compressor" element={<CompressorPage />} />
+				<Route exact path="/decompressor" element={<DecompressorPage />} />
 				<Route exact path="/404" element={<InvalidLink />} />
 			</Routes>
 		</BrowserRouter>

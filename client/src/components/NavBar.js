@@ -23,13 +23,13 @@ export default function NavBar() {
 						<span className="ml-5 text-xl">Small Bytes</span>
 					</Link>
 					<nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-						<Link to="/" className={`mr-5 ${pathname === '/small-bytes/home' ? "selected" : ""}`}>
+						<Link to="/" className={`mr-5 ${pathname === '/home' ? "selected" : ""}`}>
 							Home
 						</Link>
-						<Link to="/small-bytes/compressor" className={`mr-5 ${pathname.includes('/small-bytes/compressor') ? "selected" : ""}`}>
+						<Link to="/compressor" className={`mr-5 ${pathname === '/compressor' ? "selected" : ""}`}>
 							Compressor
 						</Link>
-						<Link to="/small-bytes/decompressor" className={`mr-5 ${pathname.includes('/small-bytes/decompressor') ? "selected" : ""}`}>
+						<Link to="/decompressor" className={`mr-5 ${pathname === '/decompressor' ? "selected" : ""}`}>
 							Decompressor
 						</Link>
 					</nav>
