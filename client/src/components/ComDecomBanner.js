@@ -8,7 +8,7 @@ export default function ComDecomBanner(props) {
 		<div>
 			<div className="tracking-wide mb-10">
 				<div
-					style={{ color: "#ee3233" }}
+					style={{ color: "#EE3233" }}
 					className="text-center uppercase mt-10 text-3xl font-bold tracking-widest"
 				>
 					{props.mode} your files
