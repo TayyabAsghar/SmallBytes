@@ -11,10 +11,6 @@ import { ReactComponent as Loader } from '../images/Loader.svg';
 export default function ChooseFile(props) {
 	const API = 'https://small-bytes-server.vercel.app';
 	const supportedFiles = ['txt', 'tiff', 'gif'];
-	const headers = {
-		'Content-Type': 'multipart/form-data',
-		'Origin': 'https://small-bytes-henna.vercel.app/home'
-	};
 	const fileInputRef = useRef(null);
 	const submitButtonRef = useRef(null);
 	const selectionButtonRef = useRef(null);
@@ -71,7 +67,7 @@ export default function ChooseFile(props) {
 			downloadableFileName = `${fileParts[0]}.${fileParts[1]}`;
 		}
 
-		axios.post(url, data, { headers })
+		axios.post(url, data)
 			.then(res => {
 				fileDownload(res.data, downloadableFileName);
 				setSelectedFile(null);
