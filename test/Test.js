@@ -16,4 +16,4 @@ let compressed = LZW.compress(fs.readFileSync(inputFile, 'binary'));
 fs.writeFileSync(outputFile, compressed, 'ucs2');
 
 let decompressed = LZW.decompress(fs.readFileSync(outputFile, 'ucs2'));
-fs.writeFileSync(doneFile, decompressed, 'binary');;
+fs.writeFileSync(doneFile, decompressed, 'binary');

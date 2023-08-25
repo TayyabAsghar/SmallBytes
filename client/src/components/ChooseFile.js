@@ -9,17 +9,17 @@ import { ReactComponent as Loader } from '../images/Loader.svg';
 
 
 export default function ChooseFile(props) {
-	const API = 'https://small-bytes-server.vercel.app/';
+	const API = 'http://small-bytes-server.vercel.app';
 	const supportedFiles = ['txt', 'tiff', 'gif'];
 	const headers = {
 		'Content-Type': 'multipart/form-data',
-		'Origin': 'http://localhost:3000/'
+		'Origin': 'https://small-bytes-henna.vercel.app/home'
 	};
-	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-	const [selectedFile, setSelectedFile] = useState(null);
 	const fileInputRef = useRef(null);
 	const submitButtonRef = useRef(null);
 	const selectionButtonRef = useRef(null);
+	const [selectedFile, setSelectedFile] = useState(null);
+	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
 	let fileParts = null;
 	let fileName, fileExtension;
@@ -30,7 +30,7 @@ export default function ChooseFile(props) {
 
 	let fileSelectedHandler = (event) => {
 		selectionButtonRef.current.blur();
-		fileParts = event.target.files[0].name.split(".");
+		fileParts = event.target.files[0]?.name.split(".");
 		fileExtension = fileParts[1]?.toLowerCase();
 
 		if (props.mode === "Decompress" && fileParts[2] !== 'lzw') {
@@ -55,28 +55,30 @@ export default function ChooseFile(props) {
 		event.preventDefault();
 		setIsButtonDisabled(true);
 		submitButtonRef.current.blur();
+
 		let url = "";
-		let downloadFileName = null;
+		let downloadableFileName = null;
 		const data = new FormData();
+
 		data.append("file", selectedFile);
+		fileParts = selectedFile?.name?.split(".");
 
 		if (props.mode === "Compress") {
 			url = `${API}/compress`;
-			downloadFileName = fileName + '.lzw';
+			downloadableFileName = fileName + '.lzw';
 		} else if (props.mode === "Decompress") {
 			url = `${API}/decompress`;
-			downloadFileName = `${fileParts[0].fileParts[1]}`;
+			downloadableFileName = `${fileParts[0]}.${fileParts[1]}`;
 		}
 
 		axios.post(url, data, { headers })
 			.then(res => {
-				fileDownload(res.data, downloadFileName);
+				fileDownload(res.data, downloadableFileName);
 				setSelectedFile(null);
 				setIsButtonDisabled(false);
 			})
 			.catch(err => {
 				setIsButtonDisabled(false);
-				console.log(err);
 			});
 	};
 
