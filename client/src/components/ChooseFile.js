@@ -9,7 +9,7 @@ import { ReactComponent as Loader } from '../images/Loader.svg';
 
 
 export default function ChooseFile(props) {
-	const API = 'http://small-bytes-server.vercel.app';
+	const API = 'https://small-bytes-server.vercel.app';
 	const supportedFiles = ['txt', 'tiff', 'gif'];
 	const headers = {
 		'Content-Type': 'multipart/form-data',
