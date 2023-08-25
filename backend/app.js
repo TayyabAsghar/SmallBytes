@@ -13,9 +13,19 @@ const upload = multer({ storage: storage });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cors()); // Use the cors middleware 
+app.use(cors({
+  origin: ["https://small-bytes-henna.vercel.app"],
+  methods: ["POST", "GET"],
+}));
+
 app.use(express.json());
+
+const decoder = new TextDecoder("utf-8");
 const supportedFiles = ['txt', 'tiff', 'gif'];
+
+app.get("/", (req, res) => {
+  res.json("SmallBytes");
+});
 
 app.post("/compress", upload.single("file"), (req, res) => {
   if (!req.file) {
@@ -29,7 +39,7 @@ app.post("/compress", upload.single("file"), (req, res) => {
     return res.status(400).json({ message: "File type is not supported." });
   }
 
-  let result = LZW.compress(req.file.buffer);
+  let result = LZW.compress(decoder.decode(req.file.buffer));
   fs.writeFileSync('./files/' + fileName + '.lzw', result, 'ucs2');
   const filePath = path.join(__dirname, 'files', `${fileName}.lzw`);
 
@@ -56,8 +66,11 @@ app.post("/decompress", upload.single("file"), (req, res) => {
   const fileName = req.file.originalname;
   const parts = fileName.split('.');
   const fileExtension = parts[1]?.toLowerCase();
+  const uploadedFilePath = `./files/${req.file.originalname}`;
+  const downloadableFilePath = `./files/${parts[0]}.${parts[1]}`;
 
-  if (parts[2]?.toLowerCase() === 'lzw') {
+
+  if (parts[2]?.toLowerCase() !== 'lzw') {
     return res.status(400).json({ message: "Not a compressed file." });
   }
 
@@ -65,18 +78,24 @@ app.post("/decompress", upload.single("file"), (req, res) => {
     return res.status(400).json({ message: "File type is not supported." });
   }
 
-  let result = LZW.decompress(req.file.buffer);
-  fs.writeFileSync(`./files/${parts[0]}.${parts[1]}`, result, 'ucs2');
-  const filePath = path.join(__dirname, 'files', `${fileName}.lzw`);
+  fs.writeFileSync(uploadedFilePath, req.file.buffer, 'binary');
+
+  let result = LZW.decompress(fs.readFileSync(uploadedFilePath, 'ucs2'));
+
+  fs.writeFileSync(downloadableFilePath, result, 'binary');
 
   res.setHeader('Content-Type', 'application/octet-stream');
   res.setHeader('Content-Disposition', `attachment; filename="${parts[0]}.${parts[1]}"`);
 
-  const fileStream = fs.createReadStream(filePath);
+  const fileStream = fs.createReadStream(downloadableFilePath);
   fileStream.pipe(res);
 
   fileStream.on('close', () => {
-    fs.unlink(filePath, (err) => {
+    fs.unlink(downloadableFilePath, (err) => {
+      if (err)
+        console.error(`Error deleting the file from server: ${err}`);
+    });
+    fs.unlink(uploadedFilePath, (err) => {
       if (err)
         console.error(`Error deleting the file from server: ${err}`);
     });
