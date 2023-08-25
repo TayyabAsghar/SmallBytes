@@ -9,7 +9,7 @@ import { ReactComponent as Loader } from '../images/Loader.svg';
 
 
 export default function ChooseFile(props) {
-	const API = 'https://small-bytes-server.vercel.app';
+	const API = 'https://small-bytes-api.vercel.app';
 	const supportedFiles = ['txt', 'tiff', 'gif'];
 	const fileInputRef = useRef(null);
 	const submitButtonRef = useRef(null);
