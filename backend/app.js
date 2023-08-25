@@ -12,9 +12,16 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const allowedOrigins = ["https://small-bytes-henna.vercel.app"];
 
 app.use(cors({
-  origin: ["https://small-bytes-henna.vercel.app"],
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ["POST", "GET"],
 }));
 
