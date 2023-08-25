@@ -12,7 +12,11 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const allowedOrigins = ["https://small-bytes-henna.vercel.app", 'http://localhost:3000'];
+const allowedOrigins = [
+  "https://small-bytes-henna.vercel.app",
+  "https://small-bytes-tayyabasghar.vercel.app",
+  "https://small-bytes-git-master-tayyabasghar.vercel.app"
+];
 
 app.use(cors({
   origin: allowedOrigins,
